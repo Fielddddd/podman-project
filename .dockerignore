@@ -1,0 +1,44 @@
+# Source Control
+.git
+.gitignore
+
+# Package Manager / Heavy Dependencies
+node_modules/
+jspm_packages/
+.npm/
+vendor/
+venv/
+.venv/
+ENV/
+
+# Build Outputs & IDEs
+dist/
+build/
+.next/
+.nuxt/
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Secrets and Configuration
+.env
+.env.*
+*.local
+config/local.json
+*.pem
+*.key
+
+# Logs and Debugging
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+__pycache__/
+
+# Docker files (Optional, avoids copying the instructions inside the container)
+Dockerfile
+.dockerignore
