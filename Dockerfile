@@ -19,4 +19,7 @@ COPY package*.json ./
 RUN npm ci --omit=dev
 
 COPY --from=build /app/dist ./dist
-CMD ["npm", "start"]
+
+EXPOSE 9999
+USER node
+CMD ["node", "dist/app.js"]
