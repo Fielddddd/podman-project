@@ -1,6 +1,7 @@
 services:
   app:
     build: .
+    image: ghcr.io/fielddddd/podman-project:main
     ports:
       - "9999:9999"
     environment:
