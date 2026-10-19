@@ -72,6 +72,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd ~/myapp
-            podman compose pull
-            podman compose up -d
+            /opt/homebrew/bin/podman compose pull
+            /opt/homebrew/bin/podman compose up -d
 
