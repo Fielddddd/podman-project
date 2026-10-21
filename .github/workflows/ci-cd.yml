@@ -42,12 +42,14 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      # PR: build only to validate the Dockerfile, don't push
       - uses: docker/build-push-action@v7
         if: github.event_name == 'pull_request'
         with:
           context: .
           push: false
 
+      # Push to main: build once, tag with branch name + commit sha
       - uses: docker/metadata-action@v6
         id: meta-build
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
@@ -65,6 +67,8 @@ jobs:
           tags: ${{ steps.meta-build.outputs.tags }}
           labels: ${{ steps.meta-build.outputs.labels }}
 
+      # Push a version tag (v*): don't rebuild — promote the existing
+      # sha-tagged image (already built from the main push) to release tags
       - uses: docker/setup-buildx-action@v4
         if: startsWith(github.ref, 'refs/tags/v')
 
